@@ -12,6 +12,13 @@ Project to group common utilities into a single project.
 
 This project is part of my personal portfolio, so, I'll be happy if you could provide me any feedback about the project, code, structure or anything that you can report that could make me a better developer!
 
+## Roadmap Utilities
+- [] Dashboard
+- [] Password Manager (like KeePass)
+- [] External MiniKeyboard (like Stream Deck)
+
+
+
 ## Built With
 - [Svelte JS](http://svelte.dev) - Cybernetically enhanced web apps
 - [TypeScript](https://www.typescriptlang.org/) - TypeScript Language
