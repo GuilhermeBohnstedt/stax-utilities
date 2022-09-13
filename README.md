@@ -16,7 +16,8 @@ This project is part of my personal portfolio, so, I'll be happy if you could pr
 - [Svelte JS](http://svelte.dev) - Cybernetically enhanced web apps
 - [TypeScript](https://www.typescriptlang.org/) - TypeScript Language
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
-- [ESLint](https://eslint.org/) - Linter
+- [Tailwind](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML
+- [DaisyUI](https://daisyui.com/) - The most popular, free and open-source Tailwind CSS component library
 - [gitmoji](https://gitmoji.carloscuesta.me/) - Emoji for commit messages
 
 ## Running locally
