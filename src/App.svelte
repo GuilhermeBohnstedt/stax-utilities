@@ -1,9 +1,10 @@
 <script lang="ts">
+  import Dashboard from "./lib/Dashboard.svelte";
+
 </script>
 
 <main>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  <button class="btn">Hello daisyui</button>
+  <Dashboard />
 </main>
 
 <style>
