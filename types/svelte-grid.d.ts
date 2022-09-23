@@ -8,14 +8,26 @@ declare module "svelte-grid" {
    */
   export type GridCol = Col;
 
-  export default class Grid extends SvelteComponentTyped<{
-    fillSpace?: boolean;
-    items: Array<Item>;
-    rowHeight?: number;
-    cols: Array<Array<number>>;
-    gap?: Array<number>;
-    fastStart?: boolean;
-  }> {}
+  export default class Grid extends SvelteComponentTyped<
+    {
+      fillSpace?: boolean;
+      items: Array<Item>;
+      rowHeight?: number;
+      cols: Array<Array<number>>;
+      gap?: Array<number>;
+      fastStart?: boolean;
+      throttleUpdate?: number;
+      throttleResize?: number;
+      sensor?: number;
+      scroller?: Element;
+    },
+    {
+      resize: () => void;
+      change: () => void;
+      mount: () => void;
+      pointerup: () => void;
+    }
+  > {}
 }
 
 declare module "svelte-grid/build/helper" {
