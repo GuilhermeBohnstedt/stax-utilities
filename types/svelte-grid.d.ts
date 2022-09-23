@@ -1,18 +1,59 @@
-declare module 'svelte-grid';
+declare module "svelte-grid" {
+  import type { SvelteComponentTyped } from "svelte";
 
-export declare class Grid extends Component {
+  export type GridItem = Item;
   /**
-   * @private
-   * For type checking capabilities only.
-   * Does not exist at runtime.
-   * ### DO NOT USE!
+   * Position 0 - Window Breakpoint
+   * Position 1 - Number of Columns
    */
-  $$prop_def: {
-    fillSpace: boolean;
-    items: Array<Record<string, string>>;
-    rowHeight: number;
-    cols: Array<number>;
-    gap: Array<number>;
-    fastStart: boolean;
-  };
+  export type GridCol = Col;
+
+  export default class Grid extends SvelteComponentTyped<{
+    fillSpace?: boolean;
+    items: Array<Item>;
+    rowHeight?: number;
+    cols: Array<Array<number>>;
+    gap?: Array<number>;
+    fastStart?: boolean;
+  }> {}
 }
+
+declare module "svelte-grid/build/helper" {
+  interface GridHelp {
+    normalize: (items: Array<Item>, col: Array<Array<number>>) => Array<Item>;
+
+    adjust: (items: Array<Item>, col: Array<Array<number>>) => Array<Item>;
+
+    item: (obj: Position & Dimension) => Item;
+
+    findSpace: (
+      item: Item,
+      items: Array<Item>,
+      col: Array<Array<number>>
+    ) => Position;
+  }
+  const gridHelp: GridHelp = {};
+  export default gridHelp;
+}
+
+type Position = {
+  x: number;
+  y: number;
+};
+
+type Dimension = {
+  w: number;
+  h: number;
+};
+
+type Item = Partial<{
+  fixed: boolean;
+  resizable: boolean;
+  draggable: boolean;
+  customDragger: boolean;
+  customResizer: boolean;
+  min: Dimension;
+  max: Partial<Dimension>;
+}> & { id: string; [col: number]: Item };
+
+type Col = Array<number>;
