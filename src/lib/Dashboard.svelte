@@ -2,6 +2,7 @@
   import Grid from "svelte-grid";
   import type { GridCol, GridItem } from "svelte-grid";
   import gridHelp from "svelte-grid/build/helper";
+  import { onMount } from "svelte";
 
   const id = () => "_" + Math.random().toString(36).substr(2, 9);
 
@@ -27,6 +28,11 @@
   ];
 
   const cols: GridCol[] = [[1280, 12]];
+
+  onMount(() => {
+    window.api.send("packages", []);
+    window.api.receive("packages", (data) => console.log(data));
+  });
 </script>
 
 <div class="container">

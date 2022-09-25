@@ -1,10 +1,12 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 const isDev = process.env.NODE_ENV ? process.env.NODE_ENV === "develop" : false;
 
+let win = null;
+
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
@@ -29,4 +31,9 @@ app.whenReady().then(() => {
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
+});
+
+// return list of files
+ipcMain.on("packages", () => {
+  win?.webContents.send("packages", []);
 });
