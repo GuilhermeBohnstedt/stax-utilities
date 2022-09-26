@@ -34,6 +34,6 @@ app.whenReady().then(() => {
 });
 
 // return list of files
-ipcMain.on("packages", () => {
-  win?.webContents.send("packages", []);
+ipcMain.handle("packages", () => {
+  return Promise.resolve([{name: 'cheat'}]);
 });

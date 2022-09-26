@@ -30,8 +30,7 @@
   const cols: GridCol[] = [[1280, 12]];
 
   onMount(() => {
-    window.api.send("packages", []);
-    window.api.receive("packages", (data) => console.log(data));
+    window.api.get("packages").then((result) => console.log(result));
   });
 </script>
 

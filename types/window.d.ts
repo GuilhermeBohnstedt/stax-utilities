@@ -4,15 +4,13 @@ enum ValidChannels {
 
 type ValidChannel = keyof typeof ValidChannels;
 
+type ResponseObject = {
+  data: any;
+  error?: string;
+};
+
 declare interface Window {
   api: {
-    send: (
-      channel: ValidChannel,
-      data: Record<string, any> | Array<string | number>
-    ) => void;
-    receive: (
-      channel: ValidChannel,
-      fn: (data: any) => void
-    ) => void;
+    get: (channel: ValidChannel) => Promise<ResponseObject>;
   };
 }
