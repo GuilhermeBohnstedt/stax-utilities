@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "Project to group common utilities into a single project.",
-  "main": "main.cjs",
+  "main": "app/main.cjs",
   "author": "Guilherme Bohnstedt",
   "type": "module",
   "license": "MIT",
