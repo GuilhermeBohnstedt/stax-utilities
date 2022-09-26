@@ -2,12 +2,13 @@ const path = require("path");
 const fs = require("fs");
 
 const getPackages = () => {
+  const baseDir = [__dirname, "../../packages"];
   try {
-    const packages = fs.readdirSync(path.join(__dirname, "../../packages"));
+    const packages = fs.readdirSync(path.join(...baseDir));
     return {
       data: packages.map((pkg) => {
         const data = fs.readFileSync(
-          path.join(__dirname, "../../packages", pkg, "config.json"),
+          path.join(...[...baseDir, pkg, "config.json"]),
           { encoding: "utf8", flag: "r" }
         );
         return JSON.parse(data);
