@@ -2,4 +2,5 @@ export type PackageConfiguration = {
     name: string;
     description: string;
     version: string;
+    identifier: string;
 }
