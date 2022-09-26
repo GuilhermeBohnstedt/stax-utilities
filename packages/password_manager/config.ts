@@ -1,4 +1,4 @@
-import type { PackageConfiguration } from "src/models";
+import type { PackageConfiguration } from "../../src/models";
 
 export default {
     name: 'Password Manager',
