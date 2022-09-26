@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+const initIPCCommunication = require("./app/ipc-communication.cjs");
 
 const isDev = process.env.NODE_ENV ? process.env.NODE_ENV === "develop" : false;
 
@@ -10,7 +11,7 @@ const createWindow = () => {
     width: 1280,
     height: 720,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "app/preload.js"),
     },
   });
 
@@ -33,7 +34,4 @@ app.whenReady().then(() => {
   });
 });
 
-// return list of files
-ipcMain.handle("packages", () => {
-  return Promise.resolve([{name: 'cheat'}]);
-});
+initIPCCommunication(isDev);
