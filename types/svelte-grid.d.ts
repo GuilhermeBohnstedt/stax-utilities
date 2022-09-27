@@ -26,21 +26,30 @@ declare module "svelte-grid" {
       change: () => void;
       mount: () => void;
       pointerup: () => void;
+    },
+    {
+      default: {
+        movePointerDown: string;
+        resizePointerDown: string;
+        dataItem: Item;
+        item: Item;
+        index: number;
+      };
     }
   > {}
 }
 
 declare module "svelte-grid/build/helper" {
   interface GridHelp {
-    normalize: (items: Array<Item>, col: Array<Array<number>>) => Array<Item>;
+    normalize: (items: Array<Item>, col: Array<Array<number>>) => Array<ItemComputedColunm>;
 
-    adjust: (items: Array<Item>, col: Array<Array<number>>) => Array<Item>;
+    adjust: (items: Array<Item>, col: Array<Array<number>>) => Array<ItemComputedColunm>;
 
-    item: (obj: Position & Dimension) => Item;
+    item: (obj: Position & Dimension) => ItemComputedColunm;
 
     findSpace: (
-      item: Item,
-      items: Array<Item>,
+      item: ItemComputedColunm,
+      items: Array<ItemComputedColunm>,
       col: Array<Array<number>>
     ) => Position;
   }
@@ -58,7 +67,7 @@ type Dimension = {
   h: number;
 };
 
-type Item = Partial<{
+type ItemComputedColunm = Partial<{
   fixed: boolean;
   resizable: boolean;
   draggable: boolean;
@@ -66,6 +75,8 @@ type Item = Partial<{
   customResizer: boolean;
   min: Dimension;
   max: Partial<Dimension>;
-}> & { id: string; [col: number]: Item };
+}>;
+
+type Item = { id: string; [col: number]: ItemComputedColunm };
 
 type Col = Array<number>;
