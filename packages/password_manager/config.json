@@ -2,5 +2,5 @@
     "name": "Password Manager",
     "description": "Utilitario para gestão de senhas",
     "version": "0.0.0",
-    "identifier": "42c1c5f20c3a3d1c3e5b62d6742b71c871bb163d"
+    "identifier": "password_manager"
 }
