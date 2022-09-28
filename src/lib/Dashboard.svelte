@@ -2,6 +2,7 @@
   import Grid from "svelte-grid";
   import type { GridCol, GridItem } from "svelte-grid";
   import gridHelp from "svelte-grid/build/helper";
+  import Loadable from "svelte-loadable";
   import type { PackageConfiguration } from "src/models";
   import SpinnerLoader from "./SpinnerLoader.svelte";
 
@@ -27,11 +28,9 @@
       .catch(reject);
   });
 
-  const getComponent = async (id: string) => {
+  const loadComponent = (id: string) => {
     const findedPackage = pkgs.find((pkg) => pkg.identifier === id);
-    return (
-      await import(`../../packages/${findedPackage.identifier}/preview.svelte`)
-    ).default;
+    return import(`../../packages/${findedPackage.identifier}/index.svelte`);
   };
 </script>
 
@@ -41,13 +40,13 @@
   <div class="container">
     <Grid {items} rowHeight={100} let:dataItem {cols}>
       <div class="widget content">
-        {#await getComponent(dataItem.id)}
-          <SpinnerLoader />
-        {:then component}
-          <svelte:component this={component} />
-        {:catch error}
-          <p style="color: red">{error}</p>
-        {/await}
+        <Loadable loader={() => loadComponent(dataItem.id)} let:component>
+          <svelte:component this={component} isPreview />
+          <SpinnerLoader slot="loading" />
+          <div slot="error" let:error>
+            {error}
+          </div>
+        </Loadable>
       </div>
     </Grid>
   </div>
