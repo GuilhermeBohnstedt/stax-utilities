@@ -37,11 +37,11 @@
 {#await packagesPromise}
   <SpinnerLoader />
 {:then items}
-  <div class="container">
+  <div class="w-screen h-screen overflow-hidden">
     <Grid {items} rowHeight={100} let:dataItem {cols}>
-      <div class="widget content">
+      <div class="h-full w-full bg-gray-700">
         <Loadable loader={() => loadComponent(dataItem.id)} let:component>
-          <svelte:component this={component} isPreview />
+          <svelte:component this={component} isPreview/>
           <SpinnerLoader slot="loading" />
           <div slot="error" let:error>
             {error}
@@ -53,19 +53,3 @@
 {:catch error}
   <p style="color: red">{error}</p>
 {/await}
-
-<style>
-  .widget {
-    background: #f1f1f1;
-    height: 100%;
-    width: 100%;
-  }
-
-  .container {
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow: hidden;
-  }
-</style>
