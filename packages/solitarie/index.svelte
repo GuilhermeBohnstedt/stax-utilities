@@ -13,6 +13,4 @@
       on:click={handleClick}>Jogar</button
     >
   </div>
-{:else}
-  Nada
 {/if}
