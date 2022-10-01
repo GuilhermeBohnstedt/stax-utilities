@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "daisyui": "^2.27.0",
+    "kdbxweb": "^2.1.1",
     "svelte-grid": "^5.1.1",
     "svelte-loadable": "^2.0.1"
   }
