@@ -41,7 +41,7 @@
     <Grid {items} rowHeight={100} let:dataItem {cols}>
       <div class="h-full w-full bg-gray-700">
         <Loadable loader={() => loadComponent(dataItem.id)} let:component>
-          <svelte:component this={component} isPreview/>
+          <svelte:component this={component} isPreview />
           <SpinnerLoader slot="loading" />
           <div slot="error" let:error>
             {error}
