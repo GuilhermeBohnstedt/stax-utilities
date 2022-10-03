@@ -29,7 +29,7 @@ This project is part of my personal portfolio, so, I'll be happy if you could pr
 - [TypeScript](https://www.typescriptlang.org/) - TypeScript Language
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
 - [Tailwind](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML
-- [Flowbite](https://flowbite.com) - Build websites even faster with components on top of Tailwind CSS
+- [Flowbite](https://flowbite-svelte.com) - Build websites even faster with components on top of Tailwind CSS
 - [gitmoji](https://gitmoji.carloscuesta.me/) - Emoji for commit messages
 
 ## Running locally
