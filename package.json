@@ -1,6 +1,6 @@
 {
   "name": "stax-utilities",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "description": "Project to group common utilities into a single project.",
   "main": "app/main.cjs",
