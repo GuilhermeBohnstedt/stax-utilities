@@ -39,7 +39,7 @@
 {:then items}
   <div class="w-screen h-screen overflow-hidden">
     <Grid {items} rowHeight={100} let:dataItem {cols}>
-      <div class="h-full w-full bg-gray-700">
+      <div class="h-full w-full bg-gray-100 dark:bg-gray-900">
         <Loadable loader={() => loadComponent(dataItem.id)} let:component>
           <svelte:component this={component} isPreview />
           <SpinnerLoader slot="loading" />
