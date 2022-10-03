@@ -4,12 +4,11 @@ module.exports = {
     "./index.html",
     "./src/**/*.{html,js,svelte,ts}",
     "./packages/**/*.{html,js,svelte,ts}",
+    "./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
-  daisyui: {
-    themes: ["business"],
-  },
+  plugins: [require("flowbite/plugin")],
+  darkMode: "class",
 };
