@@ -1,11 +1,12 @@
 <script lang="ts">
-  import InputDatabaseFile from "./components/InputDatabaseFile.svelte";
+  import { Fileupload, Label } from "flowbite-svelte";
 
   export let isPreview: boolean;
 </script>
 
 {#if isPreview}
   <div class="w-full h-full p-3">
-    <InputDatabaseFile />
+    <Label class="pb-2">Upload file</Label>
+    <Fileupload />
   </div>
 {/if}
