@@ -14,6 +14,7 @@ This project is part of my personal portfolio, so, I'll be happy if you could pr
 
 ## Roadmap Utilities
 - [ ] Dashboard
+- [X] Stopwatch (v1.0.0)
 - [ ] Password Manager (like KeePass)
 - [ ] Calculator (with extra features)
 - [ ] Financial System
