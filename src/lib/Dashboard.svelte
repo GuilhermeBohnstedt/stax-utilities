@@ -1,10 +1,10 @@
 <script lang="ts">
   import Grid from "svelte-grid";
+  import { Spinner } from "flowbite-svelte";
   import type { GridCol, GridItem } from "svelte-grid";
   import gridHelp from "svelte-grid/build/helper";
   import Loadable from "svelte-loadable";
   import type { PackageConfiguration } from "src/models";
-  import SpinnerLoader from "./SpinnerLoader.svelte";
 
   const cols: GridCol[] = [[1280, 12]];
   let pkgs: PackageConfiguration[];
@@ -35,21 +35,21 @@
 </script>
 
 {#await packagesPromise}
-  <SpinnerLoader />
+<div class="flex justify-center items-center h-full">
+  <Spinner size="20" />
+</div>
 {:then items}
-  <div class="w-screen h-screen overflow-hidden">
-    <Grid {items} rowHeight={100} let:dataItem {cols}>
-      <div class="h-full w-full bg-gray-100 dark:bg-gray-900">
-        <Loadable loader={() => loadComponent(dataItem.id)} let:component>
-          <svelte:component this={component} isPreview />
-          <SpinnerLoader slot="loading" />
-          <div slot="error" let:error>
-            {error}
-          </div>
-        </Loadable>
-      </div>
-    </Grid>
-  </div>
+  <Grid {items} rowHeight={100} let:dataItem {cols}>
+    <div class="h-full w-full bg-gray-100 dark:bg-gray-900">
+      <Loadable loader={() => loadComponent(dataItem.id)} let:component>
+        <svelte:component this={component} isPreview />
+        <Spinner size="10" slot="loading" />
+        <div slot="error" let:error>
+          {error}
+        </div>
+      </Loadable>
+    </div>
+  </Grid>
 {:catch error}
   <p style="color: red">{error}</p>
 {/await}
