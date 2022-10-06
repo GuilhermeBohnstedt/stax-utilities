@@ -42,6 +42,7 @@
   "dependencies": {
     "kdbxweb": "^2.1.1",
     "svelte-grid": "^5.1.1",
-    "svelte-loadable": "^2.0.1"
+    "svelte-loadable": "^2.0.1",
+    "svelte-portal": "^2.2.0"
   }
 }
