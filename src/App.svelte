@@ -9,5 +9,5 @@
   <Dashboard />
 </main>
 
-<style>
-</style>
+<div id="modals" />
+<div id="toasts" />
