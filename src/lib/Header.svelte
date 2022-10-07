@@ -9,6 +9,8 @@
   import About from "./About.svelte";
   import AppDarkMode from "./AppDarkMode.svelte";
   import IconApps from "~icons/ri/apps-2-fill";
+
+  let dropdownOpen = false;
 </script>
 
 <Navbar rounded color="form">
@@ -21,8 +23,8 @@
   </NavBrand>
 
   <div class="flex md:order-2">
-    <Button pill={true} class="!p-2" color="alternative" size="xl"><IconApps /></Button>
-    <Dropdown>
+    <Button id="app-button" pill={true} class="!p-2" color="alternative" size="xl"><IconApps /></Button>
+    <Dropdown triggeredBy="#app-button" bind:open={dropdownOpen}>
       <About let:onClick>
         <DropdownItem on:click={onClick}>Sobre</DropdownItem>
       </About>

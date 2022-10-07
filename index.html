@@ -5,6 +5,16 @@
     <link rel="icon" type="image/png" href="/stax-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stax Utilities</title>
+
+    <script>
+      if (window) {
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ? window.document.documentElement.classList.add("dark")
+          : window.document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body class="bg-white dark:bg-gray-800 w-screen h-screen overflow-hidden">
     <div id="app" class="h-full"></div>
