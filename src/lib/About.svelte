@@ -2,15 +2,8 @@
   import { Modal, Img, P } from "flowbite-svelte";
   import Portal from "svelte-portal";
 
-  let open = false;
-
-  const handleClick = (e: MouseEvent) => {
-    e.stopPropagation();
-    open = true;
-  };
+  export let open = false;
 </script>
-
-<slot onClick={handleClick} />
 
 <Portal target="#modals">
   <Modal title="Sobre o Stax" bind:open size="sm" padding="sm">

@@ -11,7 +11,14 @@
   import IconApps from "~icons/ri/apps-2-fill";
 
   let dropdownOpen = false;
+  let aboutOpen = false;
+
+  const handleOpenAbout = () => {
+    aboutOpen = true;
+  };
 </script>
+
+<About bind:open={aboutOpen} />
 
 <Navbar rounded color="form">
   <NavBrand>
@@ -23,11 +30,11 @@
   </NavBrand>
 
   <div class="flex md:order-2">
-    <Button id="app-button" pill={true} class="!p-2" color="alternative" size="xl"><IconApps /></Button>
+    <Button id="app-button" pill class="!p-2" color="alternative" size="xl">
+      <IconApps />
+    </Button>
     <Dropdown triggeredBy="#app-button" bind:open={dropdownOpen}>
-      <About let:onClick>
-        <DropdownItem on:click={onClick}>Sobre</DropdownItem>
-      </About>
+      <DropdownItem on:click={handleOpenAbout}>Sobre</DropdownItem>
       <AppDarkMode let:isDark let:toggleTheme>
         <DropdownItem on:click={toggleTheme}>
           Tema: {isDark ? "Escuro" : "Claro"}
