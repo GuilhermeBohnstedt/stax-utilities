@@ -1,17 +1,16 @@
 <script lang="ts">
-  import {
-    Navbar,
-    NavBrand,
-    Button,
-    Dropdown,
-    DropdownItem,
-  } from "flowbite-svelte";
+  import { Navbar, NavBrand, Button, Dropdown } from "flowbite-svelte";
   import About from "./About.svelte";
-  import AppDarkMode from "./AppDarkMode.svelte";
   import IconApps from "~icons/ri/apps-2-fill";
+  import IconPallete from "~icons/ri/palette-line";
+  import IconInformation from "~icons/ri/information-line";
+
+  import actionChangeTheme from "../actions/actionChangeTheme";
 
   let dropdownOpen = false;
   let aboutOpen = false;
+  const listButtonClasses =
+    "flex items-center space-x-2 font-medium py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 w-full text-left";
 
   const handleOpenAbout = () => {
     aboutOpen = true;
@@ -34,12 +33,18 @@
       <IconApps />
     </Button>
     <Dropdown triggeredBy="#app-button" bind:open={dropdownOpen}>
-      <DropdownItem on:click={handleOpenAbout}>Sobre</DropdownItem>
-      <AppDarkMode let:isDark let:toggleTheme>
-        <DropdownItem on:click={toggleTheme}>
-          Tema: {isDark ? "Escuro" : "Claro"}
-        </DropdownItem>
-      </AppDarkMode>
+      <li>
+        <button class={listButtonClasses} on:click={handleOpenAbout}>
+          <IconInformation />
+          <span > Sobre </span>
+        </button>
+      </li>
+      <li>
+        <button class={listButtonClasses} use:actionChangeTheme>
+          <IconPallete />
+          <span > Alterar Tema </span>
+        </button>
+      </li>
     </Dropdown>
   </div>
 </Navbar>

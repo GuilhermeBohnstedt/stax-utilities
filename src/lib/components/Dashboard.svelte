@@ -30,7 +30,7 @@
 
   const loadComponent = (id: string) => {
     const findedPackage = pkgs.find((pkg) => pkg.identifier === id);
-    return import(`../../packages/${findedPackage.identifier}/index.svelte`);
+    return import(`../../../packages/${findedPackage.identifier}/index.svelte`);
   };
 </script>
 

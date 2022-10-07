@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Dashboard from "./lib/Dashboard.svelte";
-  import Header from "./lib/Header.svelte";
+  import Dashboard from "./lib/components/Dashboard.svelte";
+  import Header from "./lib/components/Header.svelte";
 </script>
 
 <Header />
