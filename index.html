@@ -5,7 +5,10 @@
     <link rel="icon" type="image/png" href="/stax-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stax Utilities</title>
-
+  </head>
+  <body class="bg-white dark:bg-gray-800 w-screen h-screen overflow-hidden">
+    <div id="app" class="h-full"></div>
+    <script type="module" src="/src/main.ts"></script>
     <script>
       if (window) {
         localStorage.getItem("color-theme") === "dark" ||
@@ -15,9 +18,5 @@
           : window.document.documentElement.classList.remove("dark");
       }
     </script>
-  </head>
-  <body class="bg-white dark:bg-gray-800 w-screen h-screen overflow-hidden">
-    <div id="app" class="h-full"></div>
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
