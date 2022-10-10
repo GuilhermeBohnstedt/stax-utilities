@@ -26,6 +26,7 @@ This project is part of my personal portfolio, so, I'll be happy if you could pr
 
 
 ## Built With
+- [Electron JS](https://www.electronjs.org) - Create multiplaform desktop apps with JavaScript, HTML and CSS
 - [Svelte JS](http://svelte.dev) - Cybernetically enhanced web apps
 - [TypeScript](https://www.typescriptlang.org/) - TypeScript Language
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
@@ -58,16 +59,20 @@ WSL 2 have support to graphical apps. So you only need install some packages. Wh
 
 Normal install and execute project.
 
-### Packing
+## Packing
 If you want run app in OS X using OS X in development environment, use (Using Linux to build app for use in Linux):
 
 ```sh
 $ npm run make
 ```
 
-If you are dev in Linux enviroment and want build for use in Windows, fist need install ``wine``.
+If you are dev in Linux enviroment and want build for use in Windows, fist need install ``wine`` and:
 
-#### Notes for Arch Linux
+```sh
+$ npm run make -- --platform=win32
+```
+
+### Notes for Arch Linux
 For Arch linux need build and install wine using ``makepkg``:
 
 ```sh
