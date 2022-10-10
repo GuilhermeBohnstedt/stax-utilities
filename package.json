@@ -10,15 +10,14 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=develop npm run electron:start & npm run svelte:dev",
     "electron:start": "electron .",
-    "electron:make": "npm run make",
-    "electron:package": "npm run package",
+    "electron:make": "electron-forge make",
+    "electron:package": "electron-forge package",
     "svelte:dev": "vite",
     "svelte:build": "vite build",
     "svelte:preview": "vite preview",
     "svelte:check": "svelte-check --tsconfig ./tsconfig.json",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "package": "",
+    "make": ""
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.67",
@@ -34,11 +33,15 @@
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
     "electron": "^20.1.4",
+    "electron-squirrel-startup": "^1.0.0",
     "flowbite": "^1.5.3",
     "flowbite-svelte": "^0.27.5",
     "postcss": "^8.4.16",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.1",
+    "svelte-grid": "^5.1.1",
+    "svelte-loadable": "^2.0.1",
+    "svelte-portal": "^2.2.0",
     "svelte-preprocess": "^4.10.7",
     "tailwindcss": "^3.1.8",
     "tslib": "^2.4.0",
@@ -48,11 +51,7 @@
     "vite-plugin-dynamic-import": "^1.2.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
-    "kdbxweb": "^2.1.1",
-    "svelte-grid": "^5.1.1",
-    "svelte-loadable": "^2.0.1",
-    "svelte-portal": "^2.2.0"
+    "kdbxweb": "^2.1.1"
   },
   "config": {
     "forge": {
