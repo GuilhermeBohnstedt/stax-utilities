@@ -21,7 +21,7 @@
 
 <Navbar rounded color="form">
   <NavBrand>
-    <img src="src/assets/stax-logo.png" class="mr-3 h-6 sm:h-9" alt="Logo" />
+    <img src="/stax-logo.png" class="mr-3 h-6 sm:h-9" alt="Logo" />
     <span
       class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
       >Stax Utilities</span
