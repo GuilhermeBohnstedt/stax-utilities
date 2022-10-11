@@ -16,8 +16,9 @@
     "svelte:build": "vite build",
     "svelte:preview": "vite preview",
     "svelte:check": "svelte-check --tsconfig ./tsconfig.json",
-    "package": "",
-    "make": ""
+    "main:build": "vite --config ./app/vite.config.ts build",
+    "package": "cross-env NODE_ENV=prod npm run svelte:build && npm run main:build && npm run electron:package",
+    "make": "cross-env NODE_ENV=prod npm run svelte:build && npm run main:build && npm run electron:make"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.67",
@@ -54,30 +55,6 @@
     "kdbxweb": "^2.1.1"
   },
   "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "stax_utilities"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+    "forge": "./forge.config.cjs"
   }
 }
