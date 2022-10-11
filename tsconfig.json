@@ -4,6 +4,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "baseUrl": ".",
     /**
@@ -21,7 +22,6 @@
     "src/**/*.ts",
     "src/**/*.js",
     "src/**/*.svelte",
-    "app/main.cjs",
     "types",
     "packages/**/*.d.ts",
     "packages/**/*.ts",
