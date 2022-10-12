@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
 
 const getPackages = () => {
   const baseDir = [__dirname, "../../packages"];
@@ -19,4 +19,4 @@ const getPackages = () => {
   }
 };
 
-module.exports = getPackages;
+export default getPackages;

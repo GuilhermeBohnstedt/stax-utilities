@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "description": "Project to group common utilities into a single project.",
-  "main": "app/main.cjs",
+  "main": "dist/electron/main.js",
   "author": "Guilherme Bohnstedt",
   "type": "module",
   "license": "MIT",
@@ -16,9 +16,8 @@
     "svelte:build": "vite build",
     "svelte:preview": "vite preview",
     "svelte:check": "svelte-check --tsconfig ./tsconfig.json",
-    "main:build": "vite --config ./app/vite.config.ts build",
-    "package": "cross-env NODE_ENV=prod npm run svelte:build && npm run main:build && npm run electron:package",
-    "make": "cross-env NODE_ENV=prod npm run svelte:build && npm run main:build && npm run electron:make"
+    "package": "cross-env NODE_ENV=prod npm run svelte:build && npm run electron:package",
+    "make": "cross-env NODE_ENV=prod npm run svelte:build && npm run electron:make"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.67",
@@ -49,7 +48,8 @@
     "typescript": "^4.6.4",
     "unplugin-icons": "^0.14.11",
     "vite": "^3.1.0",
-    "vite-plugin-dynamic-import": "^1.2.2"
+    "vite-plugin-dynamic-import": "^1.2.2",
+    "vite-plugin-electron": "^0.9.3"
   },
   "dependencies": {
     "kdbxweb": "^2.1.1"

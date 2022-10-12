@@ -41,7 +41,7 @@ module.exports = {
     packageAfterCopy: async (forgeConfig, buildPath) => {
       const pj = await fs.readJson(path.resolve(__dirname, "package.json"));
 
-      pj.main = "build/main/electron-main.cjs";
+      pj.main = "electron/main.js";
       pj.devDependencies = {};
       pj.dependencies = {};
 

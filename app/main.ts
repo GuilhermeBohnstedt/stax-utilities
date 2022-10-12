@@ -1,10 +1,10 @@
-const { app, BrowserWindow } = require("electron");
-const path = require("path");
-const initIPCCommunication = require("./ipc-communication.cjs");
+import { app, BrowserWindow } from "electron";
+import path from "path";
+import initIPCCommunication from "./ipc-communication.js";
 
 const isDev = process.env.NODE_ENV ? process.env.NODE_ENV === "develop" : false;
 
-let win = null;
+let win: BrowserWindow;
 
 const createWindow = () => {
   win = new BrowserWindow({
