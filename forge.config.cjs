@@ -6,11 +6,10 @@ module.exports = {
     ignore: (file) => {
       if (!file) return false;
 
-      const isBuildFolder = file.includes("/build");
+      const isBuildFolder = file.includes("/dist");
       const isPackageJson = file.includes("/package.json");
 
       if (isPackageJson || isBuildFolder) {
-        console.log(file);
         return false;
       }
 
@@ -41,7 +40,7 @@ module.exports = {
     packageAfterCopy: async (forgeConfig, buildPath) => {
       const pj = await fs.readJson(path.resolve(__dirname, "package.json"));
 
-      pj.main = "electron/main.js";
+      pj.main = "dist/electron/main.js";
       pj.devDependencies = {};
       pj.dependencies = {};
 
