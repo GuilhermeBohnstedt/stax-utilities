@@ -2,8 +2,6 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 import initIPCCommunication from "./ipc-communication.js";
 
-const isDev = process.env.NODE_ENV ? process.env.NODE_ENV === "develop" : false;
-
 let win: BrowserWindow;
 
 const createWindow = () => {
@@ -15,10 +13,10 @@ const createWindow = () => {
     },
   });
 
-  if (isDev) {
-    win.loadURL("http://localhost:5173/");
+  if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL)
   } else {
-    win.loadFile("index.html");
+    win.loadFile('index.html');
   }
 };
 
@@ -34,4 +32,4 @@ app.whenReady().then(() => {
   });
 });
 
-initIPCCommunication(isDev);
+initIPCCommunication();

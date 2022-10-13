@@ -5,19 +5,13 @@
   "description": "Project to group common utilities into a single project.",
   "main": "dist/electron/main.js",
   "author": "Guilherme Bohnstedt",
-  "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=develop npm run electron:start & npm run svelte:dev",
-    "electron:start": "electron .",
-    "electron:make": "electron-forge make",
-    "electron:package": "electron-forge package",
-    "svelte:dev": "vite",
-    "svelte:build": "vite build",
+    "dev": "vite",
+    "package": "vite build && electron-forge package",
+    "make": "vite build && electron-forge make",
     "svelte:preview": "vite preview",
-    "svelte:check": "svelte-check --tsconfig ./tsconfig.json",
-    "package": "cross-env NODE_ENV=prod npm run svelte:build && npm run electron:package",
-    "make": "cross-env NODE_ENV=prod npm run svelte:build && npm run electron:make"
+    "svelte:check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.67",
