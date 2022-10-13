@@ -8,7 +8,7 @@
 <Portal target="#modals">
   <Modal title="Sobre o Stax" bind:open size="sm" padding="sm">
     <Img
-      src="/stax-logo.png"
+      src="stax-logo.png"
       size="max-w-lg"
       alignment="mx-auto"
       alt="sample 1"
