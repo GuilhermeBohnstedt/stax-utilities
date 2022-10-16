@@ -10,8 +10,8 @@
   let pkgs: PackageConfiguration[];
 
   const packagesPromise = new Promise<GridItem[]>(async (resolve, reject) => {
-    window.api
-      .get<PackageConfiguration[]>("packages")
+    window.packages
+      .get<PackageConfiguration[]>()
       .then((response) => {
         const items: GridItem[] = response.data.map((pkg, index) => ({
           12: gridHelp.item({

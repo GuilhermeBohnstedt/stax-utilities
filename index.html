@@ -9,14 +9,5 @@
   <body class="bg-white dark:bg-gray-800 w-screen h-screen overflow-hidden">
     <div id="app" class="h-full"></div>
     <script type="module" src="/src/main.ts"></script>
-    <script>
-      if (window) {
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-          ? window.document.documentElement.classList.add("dark")
-          : window.document.documentElement.classList.remove("dark");
-      }
-    </script>
   </body>
 </html>

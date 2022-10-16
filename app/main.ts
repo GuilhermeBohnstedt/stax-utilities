@@ -18,6 +18,8 @@ const createWindow = () => {
   } else {
     win.loadFile('dist/index.html');
   }
+
+  initIPCCommunication();
 };
 
 app.on("window-all-closed", () => {
@@ -31,5 +33,3 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
-
-initIPCCommunication();
