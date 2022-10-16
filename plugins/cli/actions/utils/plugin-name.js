@@ -1,13 +1,10 @@
-const inquirer = require("inquirer");
+const prefixName = 'stax-plugin-'
 
-const getPluginName = () => {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: `Enter plugin name:`,
-    },
-  ]);
+const generatePluginName = (name) => `${prefixName}${name}`
+
+const isPluginName = (name) => String(name).includes(prefixName);
+
+module.exports = {
+  generatePluginName,
+  isPluginName
 };
-
-module.exports = getPluginName;

@@ -1,8 +1,8 @@
 const shell = require("shelljs");
-const fs = require("fs");
+const pn = require("./plugin-name");
 
 const getAllPluginsName = () => {
-  return shell.ls('-l', './plugins').map(folder => folder.name).filter((plg) => plg !== "cli");
+  return shell.ls('-l', '../').map(folder => folder.name).filter((plg) => pn.isPluginName(plg));
 };
 
 module.exports = getAllPluginsName;

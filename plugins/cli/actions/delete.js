@@ -30,7 +30,7 @@ const del = async () => {
   ]);
 
   if (confirm) {
-    shell.rm("-rf", `plugins/${name}`);
+    shell.rm("-rf", `../${name}`);
   }
 };
 
