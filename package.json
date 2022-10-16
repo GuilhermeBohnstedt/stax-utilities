@@ -25,6 +25,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.2",
     "@tsconfig/svelte": "^3.0.0",
     "autoprefixer": "^10.4.10",
+    "chalk": "^4.1.2",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
     "electron": "^20.1.4",
