@@ -23,10 +23,7 @@
     "src/**/*.js",
     "src/**/*.svelte",
     "types",
-    "packages/**/*.d.ts",
-    "packages/**/*.ts",
-    "packages/**/*.js",
-    "packages/**/*.svelte",
   ],
+  "exclude": ["plugins"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

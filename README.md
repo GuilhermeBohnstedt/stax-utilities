@@ -53,8 +53,6 @@ $ npm i
 $ npm run dev
 ```
 
-and navigate to [localhost:5173](http://http://localhost:5173//)
-
 ### Using WSL 2
 WSL 2 have support to graphical apps. So you only need install some packages. When install Chromium all needed packages are installed, so install it and sheeshhh.
 
@@ -81,6 +79,15 @@ $ git clone https://aur.archlinux.org/wine-stable.git
 
 $ makepkg -si
 ```
+
+## CLI
+This project contains a CLI to help developer create plugins. To run:
+
+```sh
+$ npm run stax:plugin
+```
+
+Read documentation [here](plugins/cli/README.md).
 
 ## Contact
 
