@@ -1,3 +1,4 @@
+const chalk = require("chalk");
 const inquirer = require("inquirer");
 const shell = require("shelljs");
 
@@ -7,7 +8,7 @@ const del = async () => {
   const plugins = getAllPluginsName();
 
   if (plugins.length === 0) {
-    console.log("No plugins to delete!");
+    console.log(chalk.redBright("No plugins to delete!"));
     return;
   }
 
@@ -31,6 +32,7 @@ const del = async () => {
 
   if (confirm) {
     shell.rm("-rf", `../${name}`);
+    console.log(chalk.green("Done."));
   }
 };
 

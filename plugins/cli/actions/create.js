@@ -1,3 +1,4 @@
+const chalk = require("chalk");
 const shell = require("shelljs");
 const getPluginName = require("./utils/get-plugin-name");
 const pn = require("./utils/plugin-name");
@@ -75,12 +76,17 @@ const create = async () => {
   shell.exec(`npm create vite@latest ${pluginName} -- --template svelte-ts`);
   shell.cd(`./${pluginName}`);
 
-  console.log("Writing configuration files...");
+  console.log(chalk.blue("Writing configuration files..."));
   shell.ShellString(viteConfig(pluginName)).to("vite.config.ts");
-  shell.ShellString(packageJson(pluginName)).to("package.json");
+  console.log(chalk.greenBright("Writed vite.config.ts file"));
 
-  console.log("Installing dependencies...");
+  shell.ShellString(packageJson(pluginName)).to("package.json");
+  console.log(chalk.greenBright("Writed package.json file\n"));
+
+  console.log(chalk.blue("Installing dependencies..."));
   shell.exec("npm install");
+
+  console.log(chalk.green("Done."));
 };
 
 module.exports = create;
