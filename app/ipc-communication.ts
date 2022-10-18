@@ -10,7 +10,6 @@ const initIPCCommunication = () => {
   ipcMain.handle("theme:change", (_event, theme: typeof nativeTheme.themeSource) => {
     nativeTheme.themeSource = theme;
 
-    console.log(theme);
     return nativeTheme.shouldUseDarkColors;
   });
 };

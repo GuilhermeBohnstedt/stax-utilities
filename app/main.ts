@@ -1,10 +1,14 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
-import initIPCCommunication from "./ipc-communication.js";
+import initIPCCommunication from "./ipc-communication";
+import PluginRegistry from './registry';
 
 let win: BrowserWindow;
+let registry: PluginRegistry;
 
 const createWindow = () => {
+  registry = new PluginRegistry(path.join(__dirname, "../plugins"));
+
   win = new BrowserWindow({
     width: 1280,
     height: 720,
@@ -18,6 +22,8 @@ const createWindow = () => {
   } else {
     win.loadFile('dist/index.html');
   }
+
+  registry.getPluginConfig('');
 
   initIPCCommunication();
 };
