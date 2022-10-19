@@ -158,7 +158,7 @@ const create = async () => {
   const { name } = await getPluginName();
 
   const pluginName = pn.generatePluginName(name);
-
+  const projectFolder = shell.pwd();
 
   console.log(chalk.blue("Scaffolding project..."));
   shell.cd("..");
@@ -190,7 +190,7 @@ const create = async () => {
 
   console.log(chalk.green("\nGiving a final touch..."));
   shell.rm('public/vite.svg');
-  shell.cp('../stax-utilities/public/stax-logo.png', 'public');
+  shell.cp(`${projectFolder}/public/stax-logo.png`, 'public');
   shell.rm('src/assets/*');
   shell.rm('src/lib/*');
   shell.ShellString(svelteAppExample(pluginName)).to("src/App.svelte");
