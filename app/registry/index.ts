@@ -1,3 +1,6 @@
+import fs from "fs/promises";
+import logger from "electron-log";
+
 interface PluginConfiguration {
   name: string;
 }
@@ -9,8 +12,14 @@ class PluginRegistry {
     this.createRegistry(pluginPath);
   }
 
-  private createRegistry(path: string) {
-    console.log(`Plugin Path: ${path}`);
+  private async createRegistry(path: string) {
+    try {
+      const plugins = await fs.readdir(path);
+
+      console.log(plugins);
+    } catch (error) {
+      logger.error(error.message);
+    }
   }
 
   getPluginConfig(name: string): PluginConfiguration | undefined {

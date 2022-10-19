@@ -49,6 +49,7 @@
     "vite-plugin-electron": "^0.9.3"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "inquirer": "^8.2.4",
     "kdbxweb": "^2.1.1"
   },

@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
 import initIPCCommunication from "./ipc-communication";
-import PluginRegistry from './registry';
+import PluginRegistry from "./registry";
 
 let win: BrowserWindow;
 let registry: PluginRegistry;
@@ -18,12 +18,12 @@ const createWindow = () => {
   });
 
   if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(process.env.VITE_DEV_SERVER_URL)
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    win.loadFile('dist/index.html');
+    win.loadFile("dist/index.html");
   }
 
-  registry.getPluginConfig('');
+  registry.getPluginConfig("");
 
   initIPCCommunication();
 };
