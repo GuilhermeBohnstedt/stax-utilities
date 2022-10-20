@@ -49,11 +49,6 @@ module.exports = {
       });
 
       await fs.mkdirp(path.resolve(buildPath, "node_modules"));
-
-      await fs.copy(
-        path.resolve(__dirname, "plugins/installed"),
-        path.resolve(buildPath, "dist/plugins/installed")
-      );
     },
   },
 };
