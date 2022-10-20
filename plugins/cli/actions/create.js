@@ -16,7 +16,7 @@ const viteConfig = (name) =>
     build: {
       lib: {
         // Could also be a dictionary or array of multiple entry points
-        entry: 'lib/main.js',
+        entry: 'src/main.ts',
         name: "${name}",
         // the proper extensions will be added
         fileName: "${name}"
