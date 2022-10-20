@@ -1,35 +1,39 @@
-import { defineConfig } from "vite";
+import { defineConfig, normalizePath, loadEnv } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import dynamicImport from "vite-plugin-dynamic-import";
-import { join } from "path";
+import { resolve } from "path";
 import Icons from "unplugin-icons/vite";
 import electron from "vite-plugin-electron";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    electron({
-      main: {
-        entry: "app/main.ts",
-      },
-      preload: {
-        input: "app/preload.ts",
-      },
-    }),
-    svelte({}),
-    dynamicImport(),
-    Icons({
-      compiler: "svelte",
-      autoInstall: true,
-    }),
+export default defineConfig(({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
-  ],
-  resolve: {
-    alias: [
-      {
-        find: "$packages",
-        replacement: join(__dirname, "packages"),
-      },
+  return {
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          {
+            src: normalizePath(resolve(__dirname, "plugins/installed")),
+            dest: normalizePath(resolve(__dirname, "dist/plugins")),
+          },
+        ],
+      }),
+      svelte({}),
+      dynamicImport(),
+      Icons({
+        compiler: "svelte",
+        autoInstall: true,
+      }),
+      electron({
+        main: {
+          entry: "app/main.ts",
+        },
+        preload: {
+          input: "app/preload.ts",
+        },
+      }),
     ],
-  },
+  };
 });
