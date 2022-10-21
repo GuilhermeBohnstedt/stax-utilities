@@ -1,8 +1,8 @@
-const create = require("./create");
-const del = require("./delete");
-const update = require("./update");
-const install = require("./install");
-const uninstall = require("./uninstall");
+import create from "./create.js";
+import del from "./delete.js";
+import update from "./update.js";
+import install from "./install.js";
+import uninstall from "./uninstall.js";
 
 const actions = {
   create,
@@ -12,4 +12,4 @@ const actions = {
   uninstall,
 };
 
-module.exports = actions;
+export default actions;

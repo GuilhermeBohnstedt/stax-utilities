@@ -1,10 +1,7 @@
-const prefixName = 'stax-plugin-'
+const prefixName = "stax-plugin-";
 
-const generatePluginName = (name) => `${prefixName}${name}`
+const generatePluginName = (name) => `${prefixName}${name}`;
 
 const isPluginName = (name) => String(name).includes(prefixName);
 
-module.exports = {
-  generatePluginName,
-  isPluginName
-};
+export { generatePluginName, isPluginName };

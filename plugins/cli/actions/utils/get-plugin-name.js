@@ -1,4 +1,4 @@
-const inquirer = require("inquirer");
+import inquirer from "inquirer";
 
 const getPluginName = () => {
   return inquirer.prompt([
@@ -10,4 +10,4 @@ const getPluginName = () => {
   ]);
 };
 
-module.exports = getPluginName;
+export default getPluginName;

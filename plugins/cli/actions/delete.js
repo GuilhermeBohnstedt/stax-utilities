@@ -1,8 +1,8 @@
-const chalk = require("chalk");
-const inquirer = require("inquirer");
-const shell = require("shelljs");
+import chalk from "chalk";
+import inquirer from "inquirer";
+import shell from "shelljs";
 
-const getAllPluginsName = require("./utils/get-all-plugins");
+import getAllPluginsName from "./utils/get-all-plugins.js";
 
 const del = async () => {
   const plugins = getAllPluginsName();
@@ -36,4 +36,4 @@ const del = async () => {
   }
 };
 
-module.exports = del;
+export default del;

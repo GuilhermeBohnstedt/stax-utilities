@@ -1,8 +1,11 @@
-const shell = require("shelljs");
-const pn = require("./plugin-name");
+import shell from "shelljs";
+import { isPluginName } from "./plugin-name.js";
 
 const getAllPluginsName = () => {
-  return shell.ls('-l', '../').map(folder => folder.name).filter((plg) => pn.isPluginName(plg));
+  return shell
+    .ls("-l", "../")
+    .map((folder) => folder.name)
+    .filter((plg) => isPluginName(plg));
 };
 
-module.exports = getAllPluginsName;
+export default getAllPluginsName;

@@ -1,5 +1,5 @@
-const inquirer = require("inquirer");
-const actions = require("./actions");
+import inquirer from "inquirer";
+import actions from "./actions/index.js";
 
 console.log("Stax Plugins");
 

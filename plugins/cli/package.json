@@ -1,0 +1,19 @@
+{
+  "name": "stax-utilities-cli",
+  "private": false,
+  "version": "0.0.1",
+  "description": "CLI for create, delete, install, uninstall and update plugins.",
+  "main": "./index.js",
+  "type": "module",
+  "author": "Guilherme Bohnstedt",
+  "license": "MIT",
+  "scripts": {
+    "stax:plugin": "node ./index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.1.2",
+    "create-svelte": "^2.0.0-next.186",
+    "inquirer": "^9.1.4",
+    "shelljs": "^0.8.5"
+  }
+}

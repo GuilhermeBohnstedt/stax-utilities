@@ -1,7 +1,8 @@
-const chalk = require("chalk");
-const shell = require("shelljs");
-const getPluginName = require("./utils/get-plugin-name");
-const pn = require("./utils/plugin-name");
+import chalk from "chalk";
+import shell from "shelljs";
+import getPluginName from "./utils/get-plugin-name.js";
+import { generatePluginName } from "./utils/plugin-name.js";
+import { create as createSvelte } from "create-svelte";
 
 const viteConfig = (name) =>
   `
@@ -92,7 +93,7 @@ module.exports = {
   plugins: [require("flowbite/plugin")],
   darkMode: "class",
 };
-`
+`;
 
 const indexHtml = (name) => `
 <!DOCTYPE html>
@@ -108,7 +109,7 @@ const indexHtml = (name) => `
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
-`
+`;
 
 const appPostCss = () => `
 @tailwind base;
@@ -117,10 +118,10 @@ const appPostCss = () => `
 
 @tailwind utilities;
 
-`
+`;
 
-const svelteAppExample = (name) => 
-`<script lang="ts">
+const svelteAppExample = (name) =>
+  `<script lang="ts">
   import { Card, Button, DarkMode } from "flowbite-svelte";
 
   const btnClass =
@@ -150,25 +151,32 @@ const svelteAppExample = (name) =>
       >
     </div>
   </Card>
-</main>`
-
-
+</main>`;
 
 const create = async () => {
   const { name } = await getPluginName();
 
-  const pluginName = pn.generatePluginName(name);
+  const pluginName = generatePluginName(name);
   const projectFolder = shell.pwd();
 
   console.log(chalk.blue("Scaffolding project..."));
   shell.cd("..");
-  shell.exec(`npm create vite@latest ${pluginName} -- --template svelte-ts`);
+
+  await createSvelte(pluginName, {
+    name: pluginName,
+    template: "skeletonlib",
+    types: "checkjs",
+    prettier: true,
+    eslint: true,
+    playwright: true,
+  });
+
   shell.cd(`./${pluginName}`);
 
   console.log(chalk.blue("Installing TailwindCss..."));
-  shell.exec('npx svelte-add@latest tailwindcss')
+  shell.exec("npx svelte-add@latest tailwindcss");
 
-  console.log(chalk.blue("\nWriting configuration files..."));
+  /*   console.log(chalk.blue("\nWriting configuration files..."));
   shell.ShellString(viteConfig(pluginName)).to("vite.config.ts");
   console.log(chalk.greenBright("Writed vite.config.ts file"));
 
@@ -182,21 +190,20 @@ const create = async () => {
   console.log(chalk.greenBright("Writed index.html file"));
 
   shell.ShellString(appPostCss()).to("src/app.postcss");
-  console.log(chalk.greenBright("Writed app.postcss file"));
-  
+  console.log(chalk.greenBright("Writed app.postcss file")); */
+
   console.log(chalk.blue("\nInstalling dependencies..."));
   shell.exec("npm i -D flowbite flowbite-svelte classnames @popperjs/core");
   shell.exec("npm install");
 
-  console.log(chalk.green("\nGiving a final touch..."));
-  shell.rm('public/vite.svg');
-  shell.cp(`${projectFolder}/public/stax-logo.png`, 'public');
-  shell.rm('src/assets/*');
-  shell.rm('src/lib/*');
-  shell.ShellString(svelteAppExample(pluginName)).to("src/App.svelte");
-  
+  /*   console.log(chalk.green("\nGiving a final touch..."));
+  shell.rm("public/vite.svg");
+  shell.cp(`${projectFolder}/public/stax-logo.png`, "public");
+  shell.rm("src/assets/*");
+  shell.rm("src/lib/*");
+  shell.ShellString(svelteAppExample(pluginName)).to("src/App.svelte"); */
 
   console.log(chalk.green("\nDone."));
 };
 
-module.exports = create;
+export default create;
