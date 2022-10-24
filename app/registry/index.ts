@@ -10,7 +10,7 @@ interface PluginConfiguration {
 
 interface InstalledLock {
   version: string;
-  path: string;
+  installedFrom: string;
 }
 
 class PluginRegistry {
@@ -31,7 +31,7 @@ class PluginRegistry {
       ).map(([key, value]) => {
         return {
           name: key,
-          path: value.path,
+          path: `${path}/installed/${key}`,
           version: value.version,
         };
       });
