@@ -3,7 +3,7 @@ import PluginRegistry from "./registry/index.js";
 
 import getPackages from "./utils/get-packages.js";
 
-const initIPCCommunication = (registry: PluginRegistry) => {
+const bridge = (registry: PluginRegistry) => {
   ipcMain.handle("get:packages", () => {
     return getPackages();
   });
@@ -28,4 +28,4 @@ const initIPCCommunication = (registry: PluginRegistry) => {
   );
 };
 
-export default initIPCCommunication;
+export default bridge;

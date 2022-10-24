@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
-import initIPCCommunication from "./ipc-communication";
+import bridge from "./bridge";
 import PluginRegistry from "./registry";
 import getPluginsPath from "./utils/get-plugins-path";
 
@@ -26,7 +26,7 @@ const createWindow = () => {
 
   registry.getPluginConfig("");
 
-  initIPCCommunication(registry);
+  bridge(registry);
 };
 
 app.on("window-all-closed", () => {
