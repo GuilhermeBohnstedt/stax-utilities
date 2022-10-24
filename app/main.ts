@@ -2,12 +2,13 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 import initIPCCommunication from "./ipc-communication";
 import PluginRegistry from "./registry";
+import getPluginsPath from "./utils/get-plugins-path";
 
 let win: BrowserWindow;
 let registry: PluginRegistry;
 
 const createWindow = () => {
-  registry = new PluginRegistry(path.join(__dirname, "../plugins"));
+  registry = new PluginRegistry(getPluginsPath());
 
   win = new BrowserWindow({
     width: 1280,
@@ -25,7 +26,7 @@ const createWindow = () => {
 
   registry.getPluginConfig("");
 
-  initIPCCommunication();
+  initIPCCommunication(registry);
 };
 
 app.on("window-all-closed", () => {

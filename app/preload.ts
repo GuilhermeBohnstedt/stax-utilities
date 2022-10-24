@@ -4,6 +4,10 @@ contextBridge.exposeInMainWorld("packages", {
   get: () => ipcRenderer.invoke("get:packages"),
 });
 
+contextBridge.exposeInMainWorld("plugins", {
+  get: () => ipcRenderer.invoke("get:plugins"),
+});
+
 contextBridge.exposeInMainWorld("theme", {
   change: (theme: "light" | "dark" | "system") =>
     ipcRenderer.invoke("theme:change", theme),
