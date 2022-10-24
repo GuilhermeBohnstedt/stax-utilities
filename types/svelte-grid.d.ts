@@ -77,6 +77,6 @@ type ItemComputedColunm = Partial<{
   max: Partial<Dimension>;
 }>;
 
-type Item = { id: string; [col: number]: ItemComputedColunm };
+type Item = { id: string; [col: number]: ItemComputedColunm, dataItem: Record<string, any> };
 
 type Col = Array<number>;
