@@ -7,9 +7,7 @@ import electron from "vite-plugin-electron";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-
+export default defineConfig(() => {
   return {
     plugins: [
       viteStaticCopy({
@@ -35,5 +33,6 @@ export default defineConfig(({ mode }) => {
         },
       }),
     ],
+    assetsInclude: ['plugins/installed/**/*.jpg']
   };
 });
