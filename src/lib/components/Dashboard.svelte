@@ -14,8 +14,6 @@
     const pluginsResponse = await window.plugins.get<PluginsConfiguration[]>();
     plugins = pluginsResponse.data;
 
-    console.log('test', pluginsResponse.data);
-
     window.packages
       .get<PackageConfiguration[]>()
       .then((response) => {
@@ -28,6 +26,7 @@
               h: 3,
             }),
             id: pkg.name,
+            dataItem: pkg
           })
         );
         pkgs = response.data;
@@ -60,7 +59,7 @@
   <Grid {items} rowHeight={100} let:dataItem {cols}>
     <div class="h-full w-full bg-gray-100 dark:bg-gray-900">
       <Loadable loader={() => loadComponent(dataItem.id)} let:component>
-        <svelte:component this={component} isPreview />
+        <svelte:component this={component} isPreview resourcePath={`/plugins/installed/${dataItem.id}`} />
         <Spinner size="10" slot="loading" />
         <div slot="error" let:error>
           {error}
