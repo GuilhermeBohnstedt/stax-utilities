@@ -13,9 +13,11 @@ Project to group common utilities into a single project.
 This project is part of my personal portfolio, so, I'll be happy if you could provide me any feedback about the project, code, structure or anything that you can report that could make me a better developer!
 
 ## Roadmap Utilities
+- [ ] Plugins System
+- [ ] CLI for Plugins
 - [ ] Dashboard
 - [ ] Plugin System (Svelte project build in lib mode)
-- [X] Stopwatch (v1.0.0)
+- [ ] Stopwatch
 - [ ] Password Manager (like KeePass)
 - [ ] Calculator (with extra features)
 - [ ] Financial System
@@ -23,7 +25,6 @@ This project is part of my personal portfolio, so, I'll be happy if you could pr
 - [ ] External MiniKeyboard (like Stream Deck)
 - [ ] Notepad
 - [ ] Email Reader
-
 
 
 ## Built With
