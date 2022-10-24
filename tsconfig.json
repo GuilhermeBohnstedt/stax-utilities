@@ -22,7 +22,7 @@
     "src/**/*.ts",
     "src/**/*.js",
     "src/**/*.svelte",
-    "types",
+    "@types",
   ],
   "exclude": ["plugins"],
   "references": [{ "path": "./tsconfig.node.json" }]
