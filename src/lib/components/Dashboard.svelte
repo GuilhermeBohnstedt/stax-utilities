@@ -4,7 +4,7 @@
   import type { GridCol, GridItem } from "svelte-grid";
   import gridHelp from "svelte-grid/build/helper";
   import Loadable from "svelte-loadable";
-  import type { PackageConfiguration, PluginsConfiguration } from "src/models";
+  import type { PackageConfiguration, PluginsConfiguration } from "models";
 
   const cols: GridCol[] = [[1280, 12]];
   let pkgs: PackageConfiguration[];
