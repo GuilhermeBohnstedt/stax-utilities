@@ -25,15 +25,12 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.2",
     "@tsconfig/svelte": "^3.0.0",
     "autoprefixer": "^10.4.10",
-    "chalk": "^4.1.2",
     "classnames": "^2.3.2",
-    "cross-env": "^7.0.3",
     "electron": "^20.1.4",
     "electron-squirrel-startup": "^1.0.0",
     "flowbite": "^1.5.3",
     "flowbite-svelte": "^0.27.5",
     "postcss": "^8.4.16",
-    "shelljs": "^0.8.5",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.1",
     "svelte-grid": "^5.1.1",
@@ -46,13 +43,11 @@
     "unplugin-icons": "^0.14.11",
     "vite": "^3.1.0",
     "vite-plugin-dynamic-import": "^1.2.2",
-    "vite-plugin-electron": "^0.9.3"
+    "vite-plugin-electron": "^0.9.3",
+    "vite-plugin-static-copy": "^0.10.0"
   },
   "dependencies": {
-    "electron-log": "^4.4.8",
-    "inquirer": "^8.2.4",
-    "kdbxweb": "^2.1.1",
-    "vite-plugin-static-copy": "^0.9.0"
+    "electron-log": "^4.4.8"
   },
   "config": {
     "forge": "./forge.config.cjs"
