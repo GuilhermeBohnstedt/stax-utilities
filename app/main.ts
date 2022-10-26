@@ -13,13 +13,17 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 1280,
     height: 720,
+    center: true,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      devTools: import.meta.env.DEV
     },
   });
 
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    win.webContents.openDevTools();
   } else {
     win.loadFile("dist/index.html");
   }
