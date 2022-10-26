@@ -114,7 +114,7 @@ const create = async () => {
 
   shell.cd(`./${pluginName}`);
 
-  console.log(chalk.blue("Installing TailwindCss..."));
+  console.log(chalk.blue("\nInstalling TailwindCss..."));
   shell.exec("npx svelte-add@latest tailwindcss");
 
   shell.ShellString(tailwindCssConfig()).to("tailwind.config.cjs");
