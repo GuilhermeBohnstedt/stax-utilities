@@ -13,7 +13,7 @@
   const packagesPromise = new Promise<GridItem[]>(async (resolve, reject) => {
     const pluginsResponse = await window.plugins.get<PluginsConfiguration[]>();
     plugins = pluginsResponse.data;
-
+    
     window.packages
       .get<PackageConfiguration[]>()
       .then((response) => {
