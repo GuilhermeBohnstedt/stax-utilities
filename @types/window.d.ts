@@ -1,4 +1,4 @@
-import type { WindowDatabase } from "models";
+import type { WindowPlugin } from "models";
 
 type ResponseObject<T> = {
   data: T;
@@ -6,7 +6,7 @@ type ResponseObject<T> = {
 };
 
 declare global {
-  interface Window extends WindowDatabase {
+  interface Window extends WindowPlugin {
     packages: {
       get: <T>() => Promise<ResponseObject<T>>;
     };
