@@ -1,8 +1,9 @@
 import chalk from "chalk";
 import shell from "shelljs";
+import { create as createSvelte } from "create-svelte";
+
 import getPluginName from "./utils/get-plugin-name.js";
 import { generatePluginName } from "./utils/plugin-name.js";
-import { create as createSvelte } from "create-svelte";
 
 const tailwindCssConfig = () => `
 const config = {
@@ -37,15 +38,6 @@ const appHtml = () => `
 </html>
 `;
 
-const appPostCss = () => `
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
-
-`;
-
 const indexJs = `
 // Reexport your entry components here
 export { default as default } from './index.svelte';
@@ -57,6 +49,29 @@ const sveltePage = `
 </script>
 
 <Index />
+`;
+
+const svelteLayout = `
+<script lang="ts">
+	import '../app.postcss';
+	import { browser } from '$app/environment';
+
+	if (browser) {
+		window.database = {
+			read: async <T>() => {
+				const data = {};
+
+				return data as T;
+			},
+			write: async () => {
+				return true;
+			}
+		};
+	}
+</script>
+
+<slot />
+
 `;
 
 const svelteAppExample = (name) =>
@@ -94,6 +109,56 @@ const svelteAppExample = (name) =>
 </main>
 `;
 
+const pluginTypes = (types) => `
+/**
+ * Verify if new feature are implemented in 
+ * https://github.com/GuilhermeBohnstedt/stax-utilities/blob/main/models/plugins.ts
+ */
+
+${types}
+
+declare global {
+  interface Window extends WindowDatabase {
+   
+  }
+}
+`;
+
+const jsCongigJson = `
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true
+	},
+	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias and https://kit.svelte.dev/docs/configuration#files
+	//
+	// If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
+	// from the referenced tsconfig.json - TypeScript does not merge them in
+  "include": [
+		".svelte-kit/ambient.d.ts",
+		".svelte-kit/types/**/$types.d.ts",
+		"vite.config.ts",
+		"src/**/*.js",
+		"src/**/*.ts",
+		"src/**/*.svelte",
+		"src/**/*.js",
+		"src/**/*.ts",
+		"src/**/*.svelte",
+		"tests/**/*.js",
+		"tests/**/*.ts",
+		"tests/**/*.svelte",
+    "@types"
+	],
+}
+`;
+
 const create = async () => {
   const { name } = await getPluginName();
 
@@ -127,14 +192,33 @@ const create = async () => {
   shell.exec("npm i -D flowbite flowbite-svelte classnames @popperjs/core");
   shell.exec("npm install");
 
-  console.log(chalk.green("\nGiving a final touch..."));
+  console.log(chalk.blue("\nGiving a final touch..."));
 
   shell.rm("static/favicon.png");
   shell.cp(`${projectFolder}/public/stax-logo.png`, "static/");
+  console.log(chalk.greenBright("Stax logo copied."));
+
   shell.rm("src/lib/*");
   shell.ShellString(svelteAppExample(pluginName)).to("src/lib/index.svelte");
   shell.ShellString(indexJs).to("src/lib/index.js");
+  console.log(chalk.greenBright("Created lib index and svelte component."));
+
   shell.ShellString(sveltePage).to("src/routes/+page.svelte");
+  console.log(chalk.greenBright("Writed +page.svelte file."));
+
+  shell.ShellString(svelteLayout).to("src/routes/+layout.svelte");
+  console.log(chalk.greenBright("Writed +layout.svelte file."));
+
+  shell.ShellString(jsCongigJson).to("jsconfig.json");
+  console.log(chalk.greenBright("Writed jsconfig.json file."));
+
+  jsCongigJson;
+
+  shell.mkdir("@types");
+  shell
+    .ShellString(pluginTypes(shell.cat(`${projectFolder}/models/database.ts`)))
+    .to("@types/window.d.ts");
+  console.log(chalk.greenBright("Writed types for Stax Plugin System."));
 
   console.log(chalk.green("\nDone."));
 };
