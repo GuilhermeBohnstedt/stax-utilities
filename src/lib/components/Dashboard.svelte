@@ -5,6 +5,7 @@
   import gridHelp from "svelte-grid/build/helper";
   import Loadable from "svelte-loadable";
   import type { PackageConfiguration, PluginsConfiguration } from "models";
+  import { onMount } from "svelte";
 
   const cols: GridCol[] = [[1280, 12]];
   let pkgs: PackageConfiguration[];
@@ -49,6 +50,10 @@
     }
     return import(`../../../packages/${findedPackage.identifier}/index.svelte`);
   };
+
+  onMount(() => {
+    window.database.read();
+  })
 </script>
 
 {#await packagesPromise}
