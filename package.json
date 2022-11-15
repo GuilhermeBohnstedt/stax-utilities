@@ -47,7 +47,8 @@
     "vite-plugin-static-copy": "^0.10.0"
   },
   "dependencies": {
-    "electron-log": "^4.4.8"
+    "electron-log": "^4.4.8",
+    "sqlite3": "^5.1.2"
   },
   "config": {
     "forge": "./forge.config.cjs"
