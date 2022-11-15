@@ -1,6 +1,5 @@
 import fs from "fs";
 import logger from "electron-log";
-import "../../plugins/installed/installed-lock.json";
 
 interface PluginConfiguration {
   name: string;
