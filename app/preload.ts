@@ -2,11 +2,11 @@ import { contextBridge, ipcRenderer } from "electron";
 import { ReadDatabaseOptions, WriteDatabaseOptions } from "../models";
 
 contextBridge.exposeInMainWorld("packages", {
-  get: () => ipcRenderer.invoke("get:packages"),
+  get: () => ipcRenderer.invoke("packages:get"),
 });
 
 contextBridge.exposeInMainWorld("plugins", {
-  get: () => ipcRenderer.invoke("get:plugins"),
+  get: () => ipcRenderer.invoke("plugins:get"),
 });
 
 contextBridge.exposeInMainWorld("theme", {
@@ -15,10 +15,10 @@ contextBridge.exposeInMainWorld("theme", {
 });
 
 contextBridge.exposeInMainWorld("database", {
-  read: (options: ReadDatabaseOptions) =>
+  read: (options?: ReadDatabaseOptions) =>
     ipcRenderer.invoke("read:database", options),
-  write: (options: WriteDatabaseOptions) =>
-    ipcRenderer.invoke("read:database", options),
+  write: (options?: WriteDatabaseOptions) =>
+    ipcRenderer.invoke("write:database", options),
 });
 
 window.addEventListener("DOMContentLoaded", () => {

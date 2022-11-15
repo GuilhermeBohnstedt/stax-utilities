@@ -7,11 +7,11 @@ import getPackages from "./utils/get-packages.js";
 import db from './database';
 
 const bridge = (registry: PluginRegistry) => {
-  ipcMain.handle("get:packages", () => {
+  ipcMain.handle("packages:get", () => {
     return getPackages();
   });
 
-  ipcMain.handle("get:plugins", () => {
+  ipcMain.handle("plugins:get", () => {
     try {
       return {
         data: registry.getAllPlugins(),
