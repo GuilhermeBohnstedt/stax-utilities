@@ -1,5 +1,5 @@
-import sqlite3 from "sqlite3";
+import PouchDB from 'pouchdb';
 
-const db = new sqlite3.Database(":memory:");
+const db = new PouchDB('stax-database');
 
 export default db;

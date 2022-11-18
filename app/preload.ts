@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron";
-import { ReadDatabaseOptions, WriteDatabaseOptions } from "../models";
+import { ReadDatabaseOptions, WriteDatabaseOptions } from "../models/database";
 
 contextBridge.exposeInMainWorld("packages", {
   get: () => ipcRenderer.invoke("packages:get"),
