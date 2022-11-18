@@ -26,3 +26,5 @@ build
 
 out/
 plugins/installed
+
+stax-database
