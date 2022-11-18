@@ -47,8 +47,9 @@
     "vite-plugin-static-copy": "^0.10.0"
   },
   "dependencies": {
+    "@types/pouchdb": "^6.4.0",
     "electron-log": "^4.4.8",
-    "sqlite3": "^5.1.2"
+    "pouchdb": "^7.3.1"
   },
   "config": {
     "forge": "./forge.config.cjs"
