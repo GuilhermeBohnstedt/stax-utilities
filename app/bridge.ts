@@ -1,5 +1,5 @@
 import { ipcMain, nativeTheme } from "electron";
-import logger from "electron-log";
+import logger from "./utils/logger";
 
 import PluginRegistry from "./registry/index.js";
 import getPackages from "./utils/get-packages.js";
@@ -41,11 +41,18 @@ const bridge = (registry: PluginRegistry) => {
         "lookin' hella cute",
       ],
     };
-    db.put(doc).then(() => {
-      db.get("mittens").then(function (doc) {
-        logger.info(doc);
-      });
-    });
+    db.put(doc)
+      .then(() => {
+        db.get("mittens").then(function (doc) {
+          logger({ type: "info", title: "" });
+        });
+      })
+      .catch((error) =>
+        logger({
+          type: "error",
+          title: `${error.name} - ${error.message}`,
+        })
+      );
   });
 };
 
